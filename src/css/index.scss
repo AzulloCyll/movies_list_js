@@ -181,10 +181,10 @@ header {
 }
 
 .menu-opened {
-	width: 90%;
 	margin-top: 15px;
 	margin-right: 20px;
 	float: left;
+	line-height: 1.5em;
 }
 
 #nav-open {
@@ -233,4 +233,12 @@ label[for="select"] {
 	float: right;
 	margin-right: 20px;
 	padding: 7px;
+}
+
+.film-counter {
+	display: inline-block;
+}
+
+.rating-counter {
+	display: inline-block;
 }

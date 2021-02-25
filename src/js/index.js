@@ -14,6 +14,8 @@ import {
 
 import { showHide } from "./2_menu.js";
 import { generateSelectOptions } from "./3_yearFilter.js";
+import { countTiles } from "./4_countTiles";
+import { averageRating } from "./5_averageRating";
 
 const body = document.body;
 const movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
@@ -37,5 +39,9 @@ window.addEventListener("resize", function () {
 colorTiles(); //początkowa inicjalizacja koloru kafelków
 showHide(); // obsługa menu hamburger
 generateSelectOptions(select); // utworzenie i obsługa filtrowania po latach
+countTiles(); //liczy ile jest wyswietlonych filmów
+averageRating(); //oblicza średnią z wyśewietlanych filmów // inicjalizacja
 
 export { movies };
+
+//
