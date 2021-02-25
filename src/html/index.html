@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, shrink-to-fit=no" />
+	<title>Testowa strona</title>
+	<link rel="stylesheet" href="../css/index.scss" />
+	<script src="https://kit.fontawesome.com/a6e0181cb2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="rwd">
+		<header id="header">
+			<button name="widok" class="change_view">Tryb nocny</button>
+
+			<div id="logo">Lista filmów</div>
+		</header>
+
+
+		<nav id="menu" class="menu">
+			<button id="nav-open"><i class="fas fa-bars"></i></button>
+
+			<div id="nav" class="nav">
+				<button id="nav-close"><i class="fas fa-times"></i></button>
+				<div class="menu-opened">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nulla animi
+					obcaecati aspernatur sunt similique iusto doloremque est suscipit fugiat, provident, excepturi
+					necessitatibus inventore officia praesentium unde, nesciunt dignissimos ipsa? Lorem ipsum dolor sit
+					amet consectetur adipisicing elit. Fugit incidunt veniam numquam unde aliquid excepturi, consectetur
+					ex maiores soluta quasi velit consequatur maxime explicabo saepe. Facilis, reiciendis! Aspernatur,
+					aliquid adipisci.</div>
+			</div>
+
+			<input type="search" name="search" class="search">
+
+			<select id="select" class="select">
+				<option>Wszystkie</option>
+			</select>
+			<label for="select">Pokaż w filmy z roku:</label>
+			<div class="clear"></div>
+		</nav>
+
+
+		<main id="main" class="main">
+			<nav id="menu2" class="menu2">
+				<button class="columns-btn" data-button-switch-to data-text-5cols="5 kolumn"
+					data-text-3cols="3 kolumny">Przełącz na
+				</button>
+			</nav>
+
+		</main>
+		<div class="clear"></div>
+	</div>
+	<script src="../js/index.js"></script>
+</body>
+
+</html>

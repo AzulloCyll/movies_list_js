@@ -1,0 +1,236 @@
+//normalize import from node_modules
+@import "../../node_modules/normalize.css/normalize";
+
+* {
+	box-sizing: border-box;
+}
+
+// stylowanie focusa i usuniecie focusa gdy klikniemy myszką
+*:focus {
+	outline: 5px dashed purple;
+}
+[data-whatintent="mouse"] *:focus {
+	outline: none;
+}
+// #END
+
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.desktop-class {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.mobile-class {
+	min-width: 650px;
+	margin: 0 auto;
+}
+
+.clear {
+	clear: both;
+}
+
+#logo {
+	width: 100%;
+	font-size: 2em;
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.main {
+	width: 100%;
+	margin: 0 auto;
+	background-color: lightcyan;
+}
+
+.menu {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.menu2 {
+	float: right;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+header {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.columns-btn {
+	border: 0;
+	padding: 10px;
+	cursor: pointer;
+	float: right;
+	margin-right: 20px;
+}
+
+.change_view {
+	position: absolute;
+	right: 20px;
+	top: 5px;
+}
+
+.tile {
+	min-height: 355px;
+}
+
+.movie_image {
+	width: 200px;
+	height: auto;
+	border-radius: 6px;
+}
+
+.movie_name {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 5px;
+}
+
+.movie_year {
+	position: absolute;
+	background-color: yellow;
+	padding: 5px 10px;
+	font-weight: bold;
+	font-size: 0.8em;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	opacity: 0.85;
+}
+
+.movie_stars {
+	display: block;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.c-tiles.c-tiles--3cols div {
+	position: relative;
+	float: left;
+	width: 31%;
+	text-align: center;
+	margin: 1%;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
+
+.c-tiles.c-tiles--5cols div {
+	position: relative;
+	float: left;
+	width: 18%;
+	text-align: center;
+	margin: 1%;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
+
+.c-tiles.c-tiles--2cols div {
+	position: relative;
+	float: left;
+	width: 48%;
+	text-align: center;
+	margin: 1%;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: #333;
+	margin: 6px 0;
+	transition: 0.4s;
+}
+
+.nav {
+	position: absolute;
+	background-color: blanchedalmond;
+	min-height: 200px;
+	width: 100%;
+	top: 0;
+	z-index: 500;
+	background-color: lightcyan;
+	border-bottom: 3px solid lightgray;
+	display: none;
+}
+
+.menu-opened {
+	width: 90%;
+	margin-top: 15px;
+	margin-right: 20px;
+	float: left;
+}
+
+#nav-open {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	margin-left: 10px;
+	padding: 10px 15px;
+	background-color: white;
+	border: 0;
+}
+
+#nav-close {
+	padding: 10px 15px;
+	color: black;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 20px;
+	background-color: white;
+	border: 0;
+	cursor: pointer;
+}
+
+.is-show {
+	display: block;
+}
+
+.star {
+	color: rgb(238, 177, 24);
+}
+
+label[for="select"] {
+	float: right;
+	padding-top: 10px;
+	margin-right: 10px;
+}
+
+.select {
+	float: right;
+	margin-top: 7px;
+	margin-right: 20px;
+}
+
+.search {
+	float: right;
+	margin-right: 20px;
+	padding: 7px;
+}
