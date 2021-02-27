@@ -15,12 +15,10 @@ import { showHide } from "./2_menu.js";
 import { generateSelectOptions } from "./3_yearFilter.js";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
-import { renderCloud } from "./6_tagCloud";
+import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
 
-const body = document.body;
 const movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
-const searchEl = document.getElementById("search"); //wyszukiwarka
 
 //wyswietlanie kafelków
 for (let movie of movies) {
@@ -55,5 +53,15 @@ search.oninput = function (event) {
 };
 
 renderCloud(); // wyświetlenie chmury tagów
+
+//obsługa filtrowania po chmurze tagów
+const links = document.getElementsByClassName("cloud-link");
+for (let i = 0; i < links.length; i++) {
+	links[i].onclick = function (event) {
+		searchHandler(event.target.textContent);
+	};
+}
+
+renderAllMoviesButton();
 
 export { movies };

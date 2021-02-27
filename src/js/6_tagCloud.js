@@ -1,3 +1,5 @@
+import { showAllTiles } from "./7_search";
+
 //chmura tagów
 
 // oblicza ilość wystąpień danego słowa
@@ -67,4 +69,13 @@ function renderCloud() {
 	}
 }
 
-export { countAppearances, renderCloud };
+function renderAllMoviesButton() {
+	const allButton = document.createElement("button");
+	allButton.textContent = "Pokaż wszystkie";
+	cloud.append(allButton);
+	allButton.onclick = function () {
+		showAllTiles();
+	};
+}
+
+export { countAppearances, renderCloud, renderAllMoviesButton };
