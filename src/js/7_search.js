@@ -20,7 +20,7 @@ function searchHandler(search) {
 
 	countTiles(); // aktualizacja elementu wyswietlającego liczbę kafelków
 	averageRating(); // aktualizacja elementu wyswietlającego średnią ocen
-	colorTiles(); // aktualizacja kolrów kafelków
+	colorTiles(); // aktualizacja kolorów kafelków
 }
 
 // pokazuje wsyztskie kafelki // obsługa wyświetlania gdy skasujemy wartość z pola wyszukiwarki
