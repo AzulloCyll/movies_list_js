@@ -1,6 +1,7 @@
 import { hideAllTiles } from "./3_yearFilter";
 import { averageRating } from "./5_averageRating";
 import { countTiles } from "./4_countTiles";
+import { colorTiles } from "./1_movielist";
 
 const names = document.getElementsByClassName("movie_name");
 const tiles = document.getElementsByClassName("tile");
@@ -19,6 +20,7 @@ function searchHandler(search) {
 
 	countTiles(); // aktualizacja elementu wyswietlającego liczbę kafelków
 	averageRating(); // aktualizacja elementu wyswietlającego średnią ocen
+	colorTiles(); // aktualizacja kolrów kafelków
 }
 
 // pokazuje wsyztskie kafelki // obsługa wyświetlania gdy skasujemy wartość z pola wyszukiwarki

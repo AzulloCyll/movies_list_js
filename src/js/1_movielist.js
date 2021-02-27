@@ -112,11 +112,20 @@ function onErrorHandler(event) {
 //koloruje kafelki co drugi
 function colorTiles() {
 	const tiles = document.getElementsByClassName("tile");
+	const visibleTiles = [];
+
 	for (let i = 0; i < tiles.length; i++) {
+		if (!tiles[i].hasAttribute("hidden")) {
+			visibleTiles.push(tiles[i]);
+		}
+	}
+
+	//koloruje tylko te kafelki, które są widoczne
+	for (let i = 0; i < visibleTiles.length; i++) {
 		if (i % 2 == 0) {
-			tiles[i].style.backgroundColor = "rgb(217, 229, 243)";
+			visibleTiles[i].style.backgroundColor = "rgb(217, 229, 243)";
 		} else {
-			tiles[i].style.backgroundColor = "rgb(205, 240, 240)";
+			visibleTiles[i].style.backgroundColor = "rgb(205, 240, 240)";
 		}
 	}
 }
