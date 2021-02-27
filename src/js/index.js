@@ -15,6 +15,7 @@ import { showHide } from "./2_menu.js";
 import { generateSelectOptions } from "./3_yearFilter.js";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
+import { renderCloud } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
 
 const body = document.body;
@@ -45,7 +46,6 @@ countTiles(); //liczy ile jest wyswietlonych filmów
 averageRating(); //oblicza średnią z wyśewietlanych filmów // inicjalizacja
 
 //wyszukiwarka
-
 search.oninput = function (event) {
 	if (event.target.value.length >= 3) {
 		searchHandler(event.target.value);
@@ -53,5 +53,7 @@ search.oninput = function (event) {
 		showAllTiles();
 	}
 };
+
+renderCloud(); // wyświetlenie chmury tagów
 
 export { movies };

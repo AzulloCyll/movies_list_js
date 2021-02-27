@@ -7,7 +7,7 @@ const names = document.getElementsByClassName("movie_name");
 const tiles = document.getElementsByClassName("tile");
 
 function searchHandler(search) {
-	search.toLowerCase();
+	search = search.toLowerCase();
 
 	hideAllTiles(); // ukrywa wszystkie kafelki
 
