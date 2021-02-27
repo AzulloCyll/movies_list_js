@@ -87,6 +87,9 @@ function createTile(name, src) {
 	// dodaje losowo generowaną liczbę gwiazdek
 	movieStars.textContent = "Ocena: ";
 	let numberOfStars = _rng0_5();
+	if (numberOfStars == 0) {
+		movieStars.innerHTML = "<em>Brak oceny</em>";
+	}
 	for (let i = 0; i < numberOfStars; i++) {
 		movieStars.innerHTML += '<i class="star fas fa-star"></i>';
 	}

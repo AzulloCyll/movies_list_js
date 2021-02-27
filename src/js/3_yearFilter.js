@@ -66,4 +66,4 @@ function hideAllTiles() {
 	}
 }
 
-export { generateSelectOptions };
+export { generateSelectOptions, hideAllTiles };
