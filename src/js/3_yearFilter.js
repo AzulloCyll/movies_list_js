@@ -52,7 +52,6 @@ function filterTiles(year) {
 	for (let movie of movies) {
 		if (movie.name.includes(year)) {
 			indexes.push(movieNames.indexOf(movie.name));
-			console.log(indexes);
 		}
 	}
 
