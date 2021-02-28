@@ -11,12 +11,14 @@ import {
 	onResizeHandler,
 	colorTiles,
 } from "./1_movielist.js";
+
 import { showHide } from "./2_menu.js";
 import { generateSelectOptions } from "./3_yearFilter.js";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
 import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
+import { sortA_up, sortY_up, sortA_down, sortY_down } from "./9_sort";
 
 const movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
 
@@ -62,6 +64,37 @@ for (let i = 0; i < links.length; i++) {
 	};
 }
 
-renderAllMoviesButton();
+renderAllMoviesButton(); //button pokazujący wszystkie filmy
+
+const sortAButton = document.getElementById("sort-a");
+const sortYButton = document.getElementById("sort-y");
+
+sortAButton.onclick = function (event) {
+	let icon = event.target.querySelector(".fas");
+
+	if (icon.classList.contains("fa-sort-up")) {
+		icon.classList.remove("fa-sort-up");
+		icon.classList.add("fa-sort-down");
+		sortA_up();
+	} else {
+		icon.classList.remove("fa-sort-down");
+		icon.classList.add("fa-sort-up");
+		sortA_down();
+	}
+};
+
+sortYButton.onclick = function (event) {
+	let icon = event.target.querySelector(".fas");
+
+	if (icon.classList.contains("fa-sort-up")) {
+		icon.classList.remove("fa-sort-up");
+		icon.classList.add("fa-sort-down");
+		sortY_up();
+	} else {
+		icon.classList.remove("fa-sort-down");
+		icon.classList.add("fa-sort-up");
+		sortY_down();
+	}
+};
 
 export { movies };

@@ -19,6 +19,7 @@ body {
 	box-sizing: border-box;
 	width: 100%;
 	margin: 0 auto;
+	min-height: 1080px;
 }
 
 .desktop-class {
@@ -49,6 +50,7 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	background-color: lightcyan;
+	min-height: 1500px;
 }
 
 .menu {
@@ -92,7 +94,7 @@ header {
 }
 
 .tile {
-	min-height: 355px;
+	min-height: 360px;
 }
 
 .movie_image {
@@ -280,4 +282,25 @@ label[for="select"] {
 
 .font-42 {
 	font-size: 42px;
+}
+
+.fa-sort-up {
+	position: relative;
+	top: 5px;
+	left: 5px;
+	padding-right: 5px;
+}
+.fa-sort-down {
+	position: relative;
+	top: -3px;
+	left: 5px;
+	padding-right: 5px;
+}
+
+.sort {
+	float: right;
+	margin-top: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-right: 10px;
 }

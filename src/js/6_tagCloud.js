@@ -1,3 +1,6 @@
+import { colorTiles } from "./1_movielist";
+import { countTiles } from "./4_countTiles";
+import { averageRating } from "./5_averageRating";
 import { showAllTiles } from "./7_search";
 
 //chmura tagów
@@ -75,6 +78,9 @@ function renderAllMoviesButton() {
 	cloud.append(allButton);
 	allButton.onclick = function () {
 		showAllTiles();
+		countTiles();
+		averageRating();
+		colorTiles();
 	};
 }
 

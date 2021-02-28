@@ -1,5 +1,3 @@
-import { _rng0_5 } from "./auxilary_fns";
-
 const main = document.getElementById("main");
 main.className = "c-tiles";
 
@@ -128,6 +126,11 @@ function colorTiles() {
 			visibleTiles[i].style.backgroundColor = "rgb(205, 240, 240)";
 		}
 	}
+}
+
+//generator liczb od 0 do 5 - używam do wygenerowania ocen
+function _rng0_5() {
+	return Math.floor(6 * Math.random());
 }
 
 export { switchCollumns, onResizeHandler, createTile, colorTiles };

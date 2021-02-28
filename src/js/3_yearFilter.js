@@ -1,6 +1,7 @@
 import { movies } from "./index";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
+import { colorTiles } from "./1_movielist";
 
 const select = document.getElementById("select");
 const yearsElem = document.getElementsByClassName("movie_year");
@@ -22,6 +23,7 @@ function generateSelectOptions(select) {
 	}
 }
 
+//pokaż wszystkie filmy
 select.onchange = function (event) {
 	if (event.target.value != "Wszystkie") {
 		let year = event.target.value;
@@ -31,6 +33,9 @@ select.onchange = function (event) {
 			tiles[i].hidden = false;
 		}
 	}
+	countTiles();
+	averageRating();
+	colorTiles();
 };
 
 function filterTiles(year) {
