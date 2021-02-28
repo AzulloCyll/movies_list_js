@@ -1,4 +1,3 @@
-import { movies } from ".";
 import { colorTiles } from "./1_movielist";
 
 // po nazwie rosnąco

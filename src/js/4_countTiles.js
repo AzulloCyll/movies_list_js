@@ -1,5 +1,4 @@
-import { movies } from ".";
-
+// funkcja liczy ile jest wyświetlonych filmów
 function countTiles() {
 	const filmNumberEl = document.getElementsByClassName("film-nubmer")[0];
 	const tiles = document.getElementsByClassName("tile");

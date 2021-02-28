@@ -1,7 +1,7 @@
 import { movies } from "./index";
+import { colorTiles } from "./1_movielist";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
-import { colorTiles } from "./1_movielist";
 
 const select = document.getElementById("select");
 const yearsElem = document.getElementsByClassName("movie_year");

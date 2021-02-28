@@ -1,7 +1,7 @@
-import { hideAllTiles } from "./3_yearFilter";
-import { averageRating } from "./5_averageRating";
-import { countTiles } from "./4_countTiles";
 import { colorTiles } from "./1_movielist";
+import { hideAllTiles } from "./3_yearFilter";
+import { countTiles } from "./4_countTiles";
+import { averageRating } from "./5_averageRating";
 
 const names = document.getElementsByClassName("movie_name");
 const tiles = document.getElementsByClassName("tile");
