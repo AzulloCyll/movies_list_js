@@ -1,3 +1,5 @@
+import { movies } from ".";
+
 function countTiles() {
 	const filmNumberEl = document.getElementsByClassName("film-nubmer")[0];
 	const tiles = document.getElementsByClassName("tile");

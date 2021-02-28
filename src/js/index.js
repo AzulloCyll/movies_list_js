@@ -20,7 +20,7 @@ import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
 import { sortA_up, sortY_up, sortA_down, sortY_down } from "./9_sort";
 
-const movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
+let movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
 
 //wyswietlanie kafelków
 for (let movie of movies) {

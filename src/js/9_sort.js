@@ -1,3 +1,4 @@
+import { movies } from ".";
 import { colorTiles } from "./1_movielist";
 
 // po nazwie rosnąco
@@ -14,6 +15,7 @@ function sortA_up() {
 	for (let i in tiles) {
 		tiles[i].remove();
 	}
+
 	showSorted(tiles);
 }
 
