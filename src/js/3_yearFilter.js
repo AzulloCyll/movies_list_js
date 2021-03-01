@@ -1,4 +1,3 @@
-import { movies } from "./index";
 import { colorTiles } from "./1_movielist";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
@@ -26,8 +25,8 @@ function generateSelectOptions(select) {
 //pokaż wszystkie filmy
 select.onchange = function (event) {
 	if (event.target.value != "Wszystkie") {
-		let year = event.target.value;
-		filterTiles(year, event);
+		let search = event.target.value;
+		filterTiles(search, event);
 	} else {
 		for (let i = 0; i < tiles.length; i++) {
 			tiles[i].hidden = false;
@@ -38,28 +37,19 @@ select.onchange = function (event) {
 	colorTiles();
 };
 
-function filterTiles(year) {
+//pokazuje filmy zgodne
+function filterTiles(search) {
 	hideAllTiles(); //ukrywam wszystkie kafelki z filmami
 
-	const movieNames = [];
+	const years = document.getElementsByClassName("movie_year");
+	const tiles = document.getElementsByClassName("tile");
 
-	for (let movie of movies) {
-		movieNames.push(movie.name);
-	}
-
-	//tworzę macierz indexów filmów w których występuje dany rok
-	let indexes = [];
-	for (let movie of movies) {
-		if (movie.name.includes(year)) {
-			indexes.push(movieNames.indexOf(movie.name));
+	for (let i = 0; i < tiles.length; i++) {
+		if (years[i].innerHTML.includes(search)) {
+			years[i].parentNode.hidden = false;
 		}
 	}
-
-	//i wyswietlam je
-	for (let i in indexes) {
-		let tile = indexes[i]; //pojedynczy index kafelka do wyswietlena
-		tiles[tile].hidden = false; //kafelek od indexu
-	}
+	colorTiles(); // aktualizacja kolorów kafelków
 	countTiles();
 	averageRating();
 }
