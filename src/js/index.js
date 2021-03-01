@@ -18,6 +18,7 @@ import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
 import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
+import { nightMode, normalMode } from "./8_nightMode";
 import { sortA_up, sortY_up, sortA_down, sortY_down } from "./9_sort";
 
 let movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
@@ -94,6 +95,18 @@ sortYButton.onclick = function (event) {
 		icon.classList.remove("fa-sort-down");
 		icon.classList.add("fa-sort-up");
 		sortY_down();
+	}
+};
+
+// obsługa tryby nocnego/dziennego
+const mode = document.getElementById("mode");
+mode.onclick = function (event) {
+	if (event.target.textContent == "Tryb nocny") {
+		nightMode();
+		event.target.textContent = "Tryb dzienny";
+	} else if ((event.target.textContent = "Tryb dzienny")) {
+		normalMode();
+		event.target.textContent = "Tryb nocny";
 	}
 };
 

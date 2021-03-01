@@ -111,6 +111,7 @@ function onErrorHandler(event) {
 function colorTiles() {
 	const tiles = document.getElementsByClassName("tile");
 	const visibleTiles = [];
+	const body = document.body;
 
 	for (let i = 0; i < tiles.length; i++) {
 		if (!tiles[i].hasAttribute("hidden")) {
@@ -119,11 +120,22 @@ function colorTiles() {
 	}
 
 	//koloruje tylko te kafelki, które są widoczne
-	for (let i = 0; i < visibleTiles.length; i++) {
-		if (i % 2 == 0) {
-			visibleTiles[i].style.backgroundColor = "rgb(217, 229, 243)";
-		} else {
-			visibleTiles[i].style.backgroundColor = "rgb(205, 240, 240)";
+	if (!body.classList.contains("dark")) {
+		for (let i = 0; i < visibleTiles.length; i++) {
+			if (i % 2 == 0) {
+				visibleTiles[i].style.backgroundColor = "rgb(217, 229, 243)";
+			} else {
+				visibleTiles[i].style.backgroundColor = "rgb(205, 240, 240)";
+			}
+		}
+	} else {
+		//gdy aktywowany jest tryb dark
+		for (let i = 0; i < visibleTiles.length; i++) {
+			if (i % 2 == 0) {
+				visibleTiles[i].style.backgroundColor = "#111111";
+			} else {
+				visibleTiles[i].style.backgroundColor = "#333333";
+			}
 		}
 	}
 }

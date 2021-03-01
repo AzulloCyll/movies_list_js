@@ -304,3 +304,23 @@ label[for="select"] {
 	padding-bottom: 2px;
 	margin-right: 10px;
 }
+
+.darktext {
+	color: black;
+}
+
+.dark {
+	background-color: #1e1e1e;
+	color: #cccccc;
+}
+
+button.dark,
+.search.dark,
+#select.dark,
+#nav-open.dark,
+#nav-close.dark,
+#nav.dark {
+	border: 1px solid #cccccc;
+	background-color: #3d3d3d;
+	color: #cccccc;
+}
