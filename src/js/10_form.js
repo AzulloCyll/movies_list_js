@@ -1,47 +1,60 @@
-import { movies } from "./index";
+import { colorTiles, createTile } from "./1_movielist";
+import { countTiles } from "./4_countTiles";
+import { averageRating } from "./5_averageRating";
+import { generateSelectOptions } from "./3_yearFilter";
 
-// dodawanie nowego filmu w losowym miejscu
+function addMovie(movies, movie) {
+	// zmenić w funkcję losującą
+	const max = movies.length + 1;
+	let randomIndex = Math.floor(Math.random() * max);
 
-//przykładowy film TODO - ma być zmienną funkcji
-let movie = { name: "NNNNNNNNNNNN", img: "film" };
+	//początek nowej tablicy movies
+	const movies2 = [];
 
-// zmenić w funkcję losującą
-const max = movies.length + 1;
-let randomIndex = Math.floor(Math.random() * max);
+	//wrzuca do zmiennej filmy aż do wylosowanego indexu
+	for (let i = 0; i < randomIndex + 1; i++) {
+		movies2.push(movies[i]);
+	}
 
-//początek nowej tablicy movies
-const movies2 = [];
+	// potem wrzuca nasz nowy film
+	movies2.push(movie);
 
-//wrzuca do zmiennej filmy aż do wylosowanego indexu
-for (let i = 0; i < randomIndex; i++) {
-	movies2.push(movies[i]);
+	// następnie wrzuca reszte tablicy
+	for (let i = randomIndex + 1; i < movies.length; i++) {
+		movies2.push(movies[i]);
+	}
+
+	// zamienia nową tablice na starą
+	movies = movies2;
+
+	// kasowanie istniejacych kafelków
+	let tiles = document.getElementsByClassName("tile");
+	while (tiles.length > 0) {
+		tiles[0].remove();
+	}
+
+	for (let movie of movies) {
+		createTile(movie.name, movie.img, movie.year, movie.rating);
+	}
+
+	countTiles();
+	averageRating();
+	colorTiles();
+	return movies;
 }
 
-// potem wrzuca nasz nowy film
-movies2.push(movie);
-
-// następnie wrzuca reszte tablicy
-for (let i = randomIndex + 1; i < movies.length; i++) {
-	movies2.push(movies[i]);
+function addMovieButtonHandler(movies) {
+	let name = document.getElementById("new-name");
+	let year = document.getElementById("new-year");
+	let img = document.getElementById("new-img");
+	let rating = document.getElementById("new-rating");
+	let movie = {};
+	movie.name = name.value;
+	movie.year = year.value;
+	movie.img = img.value;
+	movie.rating = rating.value;
+	movies = addMovie(movies, movie);
+	return movies;
 }
 
-// zamienia nową tablice na starą
-movies = movies2;
-
-console.log(movies);
-
-// kasowanie istneijacych kafelków
-const tiles = document.getElementsByClassName("tile");
-console.log(tiles);
-
-for (let i = 0; i < tiles.length; i++) {
-	tiles[i].remove();
-	console.log("ttt");
-}
-
-//wrzucenie nowych na podstawie zmienionej tablicy
-for (let movie of movies) {
-	createTile(movie.name, movie.img);
-}
-
-console.log(movies);
+export { addMovieButtonHandler };

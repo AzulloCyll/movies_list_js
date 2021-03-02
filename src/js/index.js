@@ -20,6 +20,7 @@ import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
 import { nightMode, normalMode } from "./8_nightMode";
 import { sortA_up, sortY_up, sortA_down, sortY_down } from "./9_sort";
+import { addMovieButtonHandler } from "./10_form";
 
 let movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
 
@@ -67,9 +68,8 @@ for (let i = 0; i < links.length; i++) {
 
 renderAllMoviesButton(); //button pokazujący wszystkie filmy
 
+//obsługa sortowania po nazwie
 const sortAButton = document.getElementById("sort-a");
-const sortYButton = document.getElementById("sort-y");
-
 sortAButton.onclick = function (event) {
 	let icon = event.target.querySelector(".fas");
 
@@ -84,6 +84,8 @@ sortAButton.onclick = function (event) {
 	}
 };
 
+//obsługa sortowania po dacie
+const sortYButton = document.getElementById("sort-y");
 sortYButton.onclick = function (event) {
 	let icon = event.target.querySelector(".fas");
 
@@ -108,6 +110,26 @@ mode.onclick = function (event) {
 		normalMode();
 		event.target.textContent = "Tryb nocny";
 	}
+};
+
+let addMovieButton = document.getElementById("add_btn");
+addMovieButton.onclick = function (event) {
+	movies = addMovieButtonHandler(movies); //po wywołaniu zmienna movies zostaje zaktualizowana
+
+	//zamyka popup
+	const apla = document.getElementById("apla");
+	const popup = document.getElementById("popup");
+	apla.style.display = "none";
+	popup.style.display = "none";
+};
+
+let showform = document.getElementById("showform");
+
+showform.onclick = function (event) {
+	const apla = document.getElementById("apla");
+	const popup = document.getElementById("popup");
+	apla.style.display = "block";
+	popup.style.display = "block";
 };
 
 export { movies };

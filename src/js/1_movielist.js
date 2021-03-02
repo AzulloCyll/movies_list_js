@@ -55,8 +55,8 @@ function onResizeHandler(element) {
 	}
 }
 
-//generacja kafelka
-function createTile(name, src) {
+//generacja kafelka //nie zawsze wszystkie dane są dostęne
+function createTile(name, src, date, stars) {
 	const tile = document.createElement("div");
 	const movieName = document.createElement("span");
 	const movieImage = document.createElement("img");
@@ -64,11 +64,18 @@ function createTile(name, src) {
 	const movieStars = document.createElement("span");
 
 	//fix białych znaków w nazwach
-	const nameTrimmed = name.trim();
+	let nameTrimmed = name.trim();
+
+	let nameWithoutYear = 0; // zmienna w ktorej przechowuje zmienną z tytułem ale bez roku
 
 	tile.className = "tile";
 
-	const nameWithoutYear = nameTrimmed.slice(0, nameTrimmed.length - 7);
+	if (!date) {
+		nameWithoutYear = nameTrimmed.slice(0, nameTrimmed.length - 7);
+	} else {
+		nameWithoutYear = name;
+	}
+
 	const year = nameTrimmed.slice(
 		nameTrimmed.length - 5,
 		nameTrimmed.length - 1
@@ -80,16 +87,34 @@ function createTile(name, src) {
 	movieStars.className = "movie_stars";
 
 	movieName.textContent = nameWithoutYear;
-	movieYear.textContent = year;
+
+	if (!date) {
+		movieYear.textContent = year;
+	} else {
+		movieYear.textContent = date;
+	}
 
 	// dodaje losowo generowaną liczbę gwiazdek
+
 	movieStars.textContent = "Ocena: ";
 	let numberOfStars = _rng0_5();
-	if (numberOfStars == 0) {
-		movieStars.innerHTML = "<em>Brak oceny</em>";
-	}
-	for (let i = 0; i < numberOfStars; i++) {
-		movieStars.innerHTML += '<i class="star fas fa-star"></i>';
+
+	if (!stars) {
+		if (numberOfStars == 0) {
+			movieStars.innerHTML = "<em>Brak oceny</em>";
+		}
+
+		for (let i = 0; i < numberOfStars; i++) {
+			movieStars.innerHTML += '<i class="star fas fa-star"></i>';
+		}
+	} else {
+		if (stars == 0) {
+			movieStars.innerHTML = "<em>Brak oceny</em>";
+		}
+
+		for (let i = 0; i < stars; i++) {
+			movieStars.innerHTML += '<i class="star fas fa-star"></i>';
+		}
 	}
 
 	movieImage.src =

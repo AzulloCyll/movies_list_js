@@ -7,7 +7,7 @@ const yearsElem = document.getElementsByClassName("movie_year");
 const tiles = document.getElementsByClassName("tile");
 
 // tworze element select i dodaje do niego unikalne lata
-function generateSelectOptions(select) {
+function generateSelectOptions() {
 	const yearsElemArr = Array.from(yearsElem);
 	const years = [];
 	for (let i in yearsElemArr) {

@@ -36,13 +36,13 @@
 
 			<input id="search" type="search" name="search" class="search">
 
-
 			<select id="select" class="select">
 				<option>Wszystkie</option>
 			</select>
 			<label for="select">Pokaż w filmy z roku:</label>
 			<button id="sort-y" class="sort">Sortuj po dacie premiery<i class="fas fa-sort-up"></i></button>
 			<button id="sort-a" class="sort">Sortuj alfabetycznie<i class="fas fa-sort-up"></i></button>
+			<button id="showform">Dodaj film</button>
 			<div class="clear"></div>
 		</nav>
 
@@ -54,6 +54,43 @@
 			</nav>
 		</main>
 		<div class="clear"></div>
+	</div>
+
+
+	<div id="apla">
+		<div id="popup">
+			<form id="addmovie">
+
+				<p><i>Dodaj nowy film:</i></p>
+
+				<input type="text" name="new-name" id="new-name" value="test">
+				<label for="new-name">Tytuł filmu: </label>
+				<div class="clear"></div>
+
+				<input type="number" name="new-year" id="new-year" value="1982">
+				<label for="new-year">Data wydania: </label>
+				<div class="clear"></div>
+
+				<input type="file" name="new-img" id="new-img">
+				<label for="new-img">Okładka: </label>
+				<div class="clear"></div>
+
+				<select name="new-rating" id="new-rating">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select><label for="new-rating">Ocena: </label>
+				<div class="clear"></div>
+
+				<button type="button" id="add_btn">Dodaj</button>
+				<div class="clear"></div>
+
+			</form>
+
+		</div>
 	</div>
 	<script src="../js/index.js"></script>
 </body>

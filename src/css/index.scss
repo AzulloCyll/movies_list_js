@@ -324,3 +324,78 @@ button.dark,
 	background-color: #3d3d3d;
 	color: #cccccc;
 }
+
+#apla {
+	background-color: rgba(0, 0, 0, 0.65);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: none;
+}
+
+#popup {
+	width: 60%;
+	height: 500px;
+	background-color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+}
+
+#addmovie {
+	width: 50%;
+	border-right: 1px solid black;
+	padding-right: 50px;
+	margin-top: 50px;
+}
+
+#addmovie input,
+#addmovie select {
+	float: right;
+	margin: 10px;
+	margin-left: 5px;
+	padding: 5px;
+}
+
+#addmovie input[type="file"] {
+	margin-right: -101px;
+}
+
+#addmovie label {
+	float: right;
+	margin: 10px;
+	padding: 5px;
+	padding-right: 0px;
+}
+
+#addmovie button {
+	float: right;
+	margin-top: 70px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#addmovie p {
+	text-align: right;
+	font-size: 1.6em;
+	margin-right: 50px;
+	font-weight: bold;
+}
+
+#showform {
+	background-color: rgb(27, 34, 70);
+	color: white;
+	border: 0;
+	padding: 5px 20px;
+	margin-left: 30px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#showform:hover {
+	background-color: rgb(38, 32, 121);
+}
