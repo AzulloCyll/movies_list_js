@@ -57,8 +57,9 @@ function addMovieButtonHandler(movies) {
 	movie.rating = rating.value;
 
 	//obsługa błędów
-	if (movie.name == "" && movie.year == "") {
+	if (movie.name == "" || movie.year == "") {
 		alert("Podaj tytuł filmu oraz rok");
+		return movies;
 	} else {
 		movies = addMovie(movies, movie);
 		alert("Film dodany");

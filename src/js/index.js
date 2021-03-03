@@ -112,9 +112,22 @@ mode.onclick = function (event) {
 	}
 };
 
-let addMovieButton = document.getElementById("add_btn");
+const addMovieButton = document.getElementById("add_btn");
 addMovieButton.onclick = function (event) {
 	movies = addMovieButtonHandler(movies); //po wywołaniu zmienna movies zostaje zaktualizowana
+	focusTrap.deactivate();
+	closePopup();
+};
+
+const showPopup = document.getElementById("showform");
+showPopup.onclick = function (event) {
+	openPopup();
+	focusTrap.activate(); // do focus-trapa
+};
+
+const xButton = document.getElementById("x-button");
+xButton.onclick = function (event) {
+	focusTrap.deactivate(); // do focus-trapa
 	closePopup();
 };
 
@@ -126,7 +139,8 @@ function closePopup() {
 	popup.style.display = "none";
 }
 
-function openPopop() {
+//otwiera popup
+function openPopup() {
 	const apla = document.getElementById("apla");
 	const popup = document.getElementById("popup");
 	apla.style.display = "block";
@@ -136,9 +150,7 @@ function openPopop() {
 
 const container = document.querySelector("#popup");
 
-// Kod przygotowany na podstawie dokumentacji biblioteki
-// Inicjalizacja funkcjonalności tzw. "focus-trap"
-// '#default' - identyfikator treści popup
+// Inicjalizacja funkcjonalności tzw. "focus-trap" na elemencie #popup
 const focusTrap = createFocusTrap("#popup", {
 	onActivate: function () {
 		container.classList.add("trap");
@@ -147,17 +159,6 @@ const focusTrap = createFocusTrap("#popup", {
 	onDeactivate: function () {
 		container.classList.remove("is-active");
 	},
-});
-
-// Pokazanie popup po kliknięciu w przycisk oraz włączenie "focus-trap" dla popup
-document.getElementById("showform").addEventListener("click", function () {
-	openPopop();
-	focusTrap.activate(); // To musi być
-});
-
-document.getElementById("x-button").addEventListener("click", function () {
-	focusTrap.deactivate(); // To musi być
-	closePopup();
 });
 
 export { movies };

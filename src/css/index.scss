@@ -331,6 +331,7 @@ label[for="select"] {
 	background-color: #1e1e1e;
 	color: #cccccc;
 	border: 1px solid #cccccc;
+	border-radius: 3px;
 }
 
 #popup.dark {
@@ -342,7 +343,13 @@ button.dark,
 .search.dark,
 #select.dark,
 #nav-open.dark,
-#nav-close.dark,
+#nav-close.dark {
+	border: 1px solid #cccccc;
+	background-color: #3d3d3d;
+	color: #cccccc;
+	border-radius: 3px;
+}
+
 #nav.dark {
 	border: 1px solid #cccccc;
 	background-color: #3d3d3d;
@@ -406,7 +413,6 @@ button.dark,
 
 #addmovie input[type="file"] {
 	width: 60%;
-	// margin-right: -50px;
 }
 
 #addmovie label {
