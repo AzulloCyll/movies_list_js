@@ -3,11 +3,18 @@ import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
 
 const select = document.getElementById("select");
-const yearsElem = document.getElementsByClassName("movie_year");
 const tiles = document.getElementsByClassName("tile");
 
 // tworze element select i dodaje do niego unikalne lata
 function generateSelectOptions() {
+	//usuń najpierw opcje jeśli jakieś były
+
+	const options = document.getElementsByClassName("year_option");
+	while (options.length > 0) {
+		options[0].remove();
+	}
+
+	const yearsElem = document.getElementsByClassName("movie_year");
 	const yearsElemArr = Array.from(yearsElem);
 	const years = [];
 	for (let i in yearsElemArr) {
@@ -18,6 +25,7 @@ function generateSelectOptions() {
 	for (let i in uniqeYears) {
 		const selectEl = document.createElement("option");
 		selectEl.innerHTML = uniqeYears[i];
+		selectEl.classList.add("year_option");
 		select.append(selectEl);
 	}
 }

@@ -40,6 +40,7 @@ function addMovie(movies, movie) {
 	countTiles();
 	averageRating();
 	colorTiles();
+	generateSelectOptions(); // aktualizacja
 	return movies;
 }
 
