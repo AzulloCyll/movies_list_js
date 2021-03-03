@@ -9,7 +9,8 @@
 *:focus {
 	outline: 5px dashed purple;
 }
-[data-whatintent="mouse"] *:focus {
+
+[data-whatinput="mouse"] *:focus {
 	outline: none;
 }
 // #END
@@ -111,6 +112,17 @@ header {
 }
 
 .movie_year {
+	position: absolute;
+	background-color: yellow;
+	padding: 5px 10px;
+	font-weight: bold;
+	font-size: 0.8em;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	opacity: 0.85;
+}
+
+.movie_year_pop {
 	position: absolute;
 	background-color: yellow;
 	padding: 5px 10px;
@@ -314,6 +326,18 @@ label[for="select"] {
 	color: #cccccc;
 }
 
+#addmovie input.dark,
+#addmovie select.dark {
+	background-color: #1e1e1e;
+	color: #cccccc;
+	border: 1px solid #cccccc;
+}
+
+#popup.dark {
+	background-color: #1e1e1e;
+	color: #cccccc;
+}
+
 button.dark,
 .search.dark,
 #select.dark,
@@ -336,21 +360,35 @@ button.dark,
 }
 
 #popup {
-	width: 60%;
-	height: 500px;
+	min-width: 70%;
+	min-height: 60%;
 	background-color: white;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	margin-bottom: 20px;
 	display: none;
+}
+
+@media (max-width: 1000px) {
+	#popup {
+		width: 100%;
+		height: 100%;
+		background-color: white;
+		position: absolute;
+		margin-bottom: 20px;
+		display: none;
+	}
 }
 
 #addmovie {
 	width: 50%;
 	border-right: 1px solid black;
-	padding-right: 50px;
+	padding-right: 4%;
 	margin-top: 50px;
+	margin-bottom: 30px;
+	float: left;
 }
 
 #addmovie input,
@@ -359,10 +397,16 @@ button.dark,
 	margin: 10px;
 	margin-left: 5px;
 	padding: 5px;
+	width: 45%;
+}
+
+#addmovie select {
+	width: auto;
 }
 
 #addmovie input[type="file"] {
-	margin-right: -101px;
+	width: 60%;
+	// margin-right: -50px;
 }
 
 #addmovie label {
@@ -374,15 +418,17 @@ button.dark,
 
 #addmovie button {
 	float: right;
-	margin-top: 70px;
+	margin-top: 30px;
+	margin-bottom: 10px;
 	padding: 10px;
 	cursor: pointer;
 }
 
 #addmovie p {
-	text-align: right;
+	text-align: left;
 	font-size: 1.6em;
-	margin-right: 50px;
+	margin-left: 15%;
+
 	font-weight: bold;
 }
 
@@ -398,4 +444,36 @@ button.dark,
 
 #showform:hover {
 	background-color: rgb(38, 32, 121);
+}
+
+#addmovie #x-button {
+	position: absolute;
+	color: white;
+	top: -12px;
+	right: 20px;
+	background-color: rgb(27, 34, 70);
+	border: 0;
+	border-radius: 3px;
+	padding-right: 12px;
+	padding-left: 12px;
+}
+
+#addmovie #x-button:hover {
+	background-color: rgb(38, 32, 121);
+}
+
+#preview {
+	width: 45%;
+	float: right;
+	margin-top: 50px;
+	padding-right: 5%;
+}
+
+#preview img {
+	display: block;
+	margin: 0 auto;
+}
+
+span.movie_year {
+	color: black;
 }

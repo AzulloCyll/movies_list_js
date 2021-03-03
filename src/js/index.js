@@ -1,7 +1,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "what-input";
-//import { createFocusTrap } from "focus-trap";
+import { createFocusTrap } from "focus-trap";
 
 import data from "../data/movies.json"; //import pliku json
 
@@ -20,7 +20,7 @@ import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
 import { nightMode, normalMode } from "./8_nightMode";
 import { sortA_up, sortY_up, sortA_down, sortY_down } from "./9_sort";
-import { addMovieButtonHandler } from "./10_form";
+import { addMovieButtonHandler, preview, yearFix } from "./10_form";
 
 let movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
 
@@ -115,21 +115,49 @@ mode.onclick = function (event) {
 let addMovieButton = document.getElementById("add_btn");
 addMovieButton.onclick = function (event) {
 	movies = addMovieButtonHandler(movies); //po wywołaniu zmienna movies zostaje zaktualizowana
+	closePopup();
+};
 
-	//zamyka popup
+//zamyka popup
+function closePopup() {
 	const apla = document.getElementById("apla");
 	const popup = document.getElementById("popup");
 	apla.style.display = "none";
 	popup.style.display = "none";
-};
+}
 
-let showform = document.getElementById("showform");
-
-showform.onclick = function (event) {
+function openPopop() {
 	const apla = document.getElementById("apla");
 	const popup = document.getElementById("popup");
 	apla.style.display = "block";
 	popup.style.display = "block";
-};
+	preview();
+}
+
+const container = document.querySelector("#popup");
+
+// Kod przygotowany na podstawie dokumentacji biblioteki
+// Inicjalizacja funkcjonalności tzw. "focus-trap"
+// '#default' - identyfikator treści popup
+const focusTrap = createFocusTrap("#popup", {
+	onActivate: function () {
+		container.classList.add("trap");
+		container.classList.add("is-active"); // Klasa "trap" można zamienić na dowloną, np. "my-form-popup"
+	},
+	onDeactivate: function () {
+		container.classList.remove("is-active");
+	},
+});
+
+// Pokazanie popup po kliknięciu w przycisk oraz włączenie "focus-trap" dla popup
+document.getElementById("showform").addEventListener("click", function () {
+	openPopop();
+	focusTrap.activate(); // To musi być
+});
+
+document.getElementById("x-button").addEventListener("click", function () {
+	focusTrap.deactivate(); // To musi być
+	closePopup();
+});
 
 export { movies };

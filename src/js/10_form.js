@@ -37,10 +37,11 @@ function addMovie(movies, movie) {
 		createTile(movie.name, movie.img, movie.year, movie.rating);
 	}
 
+	// aktualizacja innych funkcji
 	countTiles();
 	averageRating();
 	colorTiles();
-	generateSelectOptions(); // aktualizacja
+	generateSelectOptions();
 	return movies;
 }
 
@@ -54,8 +55,77 @@ function addMovieButtonHandler(movies) {
 	movie.year = year.value;
 	movie.img = img.value;
 	movie.rating = rating.value;
-	movies = addMovie(movies, movie);
-	return movies;
+
+	//obsługa błędów
+	if (movie.name == "" && movie.year == "") {
+		alert("Podaj tytuł filmu oraz rok");
+	} else {
+		movies = addMovie(movies, movie);
+		alert("Film dodany");
+		return movies;
+	}
 }
 
-export { addMovieButtonHandler };
+//zmienne globalne potrzebne do obsługi podglądu
+let name = document.getElementById("new-name");
+let year = document.getElementById("new-year");
+let img = document.getElementById("new-img");
+let rating = document.getElementById("new-rating");
+const movieNamePrev = document.createElement("div");
+const movieImagePrev = document.createElement("img");
+const movieYearPrev = document.createElement("span");
+const movieStarsPrev = document.createElement("span");
+
+function preview() {
+	const preview = document.getElementById("preview");
+	const tilePrev = document.createElement("div");
+
+	tilePrev.className = "tile_popup";
+
+	movieNamePrev.className = "movie_name";
+	movieYearPrev.className = "movie_year";
+	movieImagePrev.className = "movie_image";
+	movieStarsPrev.className = "movie_stars";
+
+	preview.append(tilePrev);
+	tilePrev.append(movieYearPrev, movieImagePrev, movieNamePrev, movieStarsPrev);
+}
+
+function createPreview() {
+	movieNamePrev.innerHTML = name.value;
+	movieYearPrev.innerHTML = year.value;
+
+	movieImagePrev.src = movieImagePrev.value;
+	movieImagePrev.src =
+		movieImagePrev.value ||
+		"https://dummyimage.com/200x285/ededed/000000.jpg&text=No+Image";
+	movieImagePrev.alt = name.value;
+
+	movieStarsPrev.innerHTML = "Ocena: ";
+
+	if (rating.value == 0) {
+		movieStarsPrev.innerHTML = "<em>Brak oceny</em>";
+	}
+
+	for (let i = 0; i < rating.value; i++) {
+		movieStarsPrev.innerHTML += '<i class="star fas fa-star"></i>';
+	}
+}
+
+name.onkeypress = function (event) {
+	createPreview();
+};
+
+year.onchange = function (event) {
+	createPreview();
+};
+
+rating.onchange = function (event) {
+	createPreview();
+};
+
+img.onchange = function (event) {
+	createPreview();
+};
+
+export { addMovieButtonHandler, preview };

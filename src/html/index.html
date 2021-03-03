@@ -58,16 +58,17 @@
 
 
 	<div id="apla">
+
 		<div id="popup">
-			<form id="addmovie">
+			<form id="addmovie" name="form_popup">
 
 				<p><i>Dodaj nowy film:</i></p>
 
-				<input type="text" name="new-name" id="new-name" value="test">
+				<input type="text" name="new-name" id="new-name" tabindex="0">
 				<label for="new-name">Tytuł filmu: </label>
 				<div class="clear"></div>
 
-				<input type="number" name="new-year" id="new-year" value="1982">
+				<input type="number" name="new-year" id="new-year" min="1950" max="2021">
 				<label for="new-year">Data wydania: </label>
 				<div class="clear"></div>
 
@@ -88,9 +89,13 @@
 				<button type="button" id="add_btn">Dodaj</button>
 				<div class="clear"></div>
 
+				<button id="x-button" type="button"><i class="fas fa-times"></i></button>
+
 			</form>
+			<div id="preview"></div>
 
 		</div>
+
 	</div>
 	<script src="../js/index.js"></script>
 </body>
