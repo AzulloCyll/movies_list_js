@@ -100,7 +100,8 @@ header {
 
 .movie_image {
 	width: 200px;
-	height: auto;
+	height: 285px;
+	object-fit: contain;
 	border-radius: 6px;
 }
 

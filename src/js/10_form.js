@@ -63,13 +63,23 @@ function addMovieButtonHandler(movies) {
 
 	movie.rating = rating.value;
 
-	//obsługa błędów
+	//obsługa błędów - walidacja
 	if (movie.name == "" || movie.year == "" || !img) {
 		alert("Podaj tytuł filmu, datę wydania oraz zdjęcie");
 		return movies;
 	} else {
 		movies = addMovie(movies, movie);
 		alert("Film dodany");
+
+		//reset formularza i preview
+
+		form_popup.reset();
+		document.getElementsByClassName("image")[0].remove();
+		const popup = document.getElementsByClassName("tile_popup")[0];
+		popup.getElementsByClassName("movie_year")[0].innerHTML = "";
+		popup.getElementsByClassName("movie_name")[0].innerHTML = "";
+		popup.getElementsByClassName("movie_stars")[0].innerHTML = "";
+
 		return movies;
 	}
 }
