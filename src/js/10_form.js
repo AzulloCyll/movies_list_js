@@ -48,17 +48,24 @@ function addMovie(movies, movie) {
 function addMovieButtonHandler(movies) {
 	let name = document.getElementById("new-name");
 	let year = document.getElementById("new-year");
-	let img = document.getElementById("new-img");
+	let img = document.getElementsByClassName("image")[0];
 	let rating = document.getElementById("new-rating");
 	let movie = {};
 	movie.name = name.value;
 	movie.year = year.value;
-	movie.img = img.value;
+
+	if (!img) {
+		movie.img =
+			"https://dummyimage.com/200x285/ededed/000000.jpg&text=No+Image";
+	} else {
+		movie.img = img.src;
+	}
+
 	movie.rating = rating.value;
 
 	//obsługa błędów
-	if (movie.name == "" || movie.year == "") {
-		alert("Podaj tytuł filmu oraz rok");
+	if (movie.name == "" || movie.year == "" || !img) {
+		alert("Podaj tytuł filmu, datę wydania oraz zdjęcie");
 		return movies;
 	} else {
 		movies = addMovie(movies, movie);
@@ -73,35 +80,26 @@ let year = document.getElementById("new-year");
 let img = document.getElementById("new-img");
 let rating = document.getElementById("new-rating");
 const movieNamePrev = document.createElement("div");
-const movieImagePrev = document.createElement("img");
 const movieYearPrev = document.createElement("span");
 const movieStarsPrev = document.createElement("span");
+const previewEl = document.getElementById("preview");
 
 function preview() {
-	const preview = document.getElementById("preview");
 	const tilePrev = document.createElement("div");
 
 	tilePrev.className = "tile_popup";
 
 	movieNamePrev.className = "movie_name";
 	movieYearPrev.className = "movie_year";
-	movieImagePrev.className = "movie_image";
 	movieStarsPrev.className = "movie_stars";
 
-	preview.append(tilePrev);
-	tilePrev.append(movieYearPrev, movieImagePrev, movieNamePrev, movieStarsPrev);
+	previewEl.append(tilePrev);
+	tilePrev.append(movieYearPrev, movieNamePrev, movieStarsPrev);
 }
 
-function createPreview() {
+function createPreview(input) {
 	movieNamePrev.innerHTML = name.value;
 	movieYearPrev.innerHTML = year.value;
-
-	movieImagePrev.src = movieImagePrev.value;
-	movieImagePrev.src =
-		movieImagePrev.value ||
-		"https://dummyimage.com/200x285/ededed/000000.jpg&text=No+Image";
-	movieImagePrev.alt = name.value;
-
 	movieStarsPrev.innerHTML = "Ocena: ";
 
 	if (rating.value == 0) {
@@ -110,6 +108,32 @@ function createPreview() {
 
 	for (let i = 0; i < rating.value; i++) {
 		movieStarsPrev.innerHTML += '<i class="star fas fa-star"></i>';
+	}
+
+	if (input != undefined) {
+		const fileURL = input.value;
+		const fileExtension = fileURL
+			.substring(fileURL.lastIndexOf(".") + 1)
+			.toLowerCase();
+
+		if (
+			input.files &&
+			input.files[0] &&
+			(fileExtension == "png" ||
+				fileExtension == "jpg" ||
+				fileExtension == "gif")
+		) {
+			const imagePreview = document.createElement("img");
+			const reader = new FileReader();
+			imagePreview.classList.add("image", "movie_image"); //klasa do zdjęcia
+
+			previewEl.prepend(imagePreview);
+
+			reader.onload = function (event) {
+				imagePreview.src = event.target.result;
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
 	}
 }
 
@@ -126,7 +150,7 @@ rating.onchange = function (event) {
 };
 
 img.onchange = function (event) {
-	createPreview();
+	createPreview(img);
 };
 
 export { addMovieButtonHandler, preview };

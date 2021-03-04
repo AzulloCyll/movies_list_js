@@ -117,8 +117,7 @@ function createTile(name, src, date, stars) {
 		}
 	}
 
-	movieImage.src =
-		src || "https://dummyimage.com/200x285/ededed/000000.jpg&text=No+Image";
+	movieImage.src = src;
 	movieImage.alt = name;
 
 	main.append(tile);
