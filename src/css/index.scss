@@ -450,7 +450,15 @@ button.dark,
 }
 
 #showform:hover {
-	background-color: rgb(38, 32, 121);
+	background-color: rgb(47, 41, 138);
+}
+
+#showform.dark {
+	background-color: rgb(58, 81, 196);
+}
+
+#showform.dark:hover {
+	background-color: rgb(61, 103, 194);
 }
 
 #addmovie #x-button {
@@ -481,6 +489,13 @@ button.dark,
 	margin: 0 auto;
 }
 
-span.movie_year {
+.movie_year {
 	color: black;
+}
+
+.prev {
+	display: block;
+	margin: 0 auto;
+	color: black;
+	top: 50px;
 }

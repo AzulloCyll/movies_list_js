@@ -75,10 +75,6 @@ function addMovieButtonHandler(movies) {
 
 		form_popup.reset();
 		document.getElementsByClassName("image")[0].remove();
-		const popup = document.getElementsByClassName("tile_popup")[0];
-		popup.getElementsByClassName("movie_year")[0].innerHTML = "";
-		popup.getElementsByClassName("movie_name")[0].innerHTML = "";
-		popup.getElementsByClassName("movie_stars")[0].innerHTML = "";
 
 		return movies;
 	}
@@ -93,18 +89,19 @@ const movieNamePrev = document.createElement("div");
 const movieYearPrev = document.createElement("span");
 const movieStarsPrev = document.createElement("span");
 const previewEl = document.getElementById("preview");
+const tilePrev = document.createElement("div");
 
 function preview() {
-	const tilePrev = document.createElement("div");
-
-	tilePrev.className = "tile_popup";
-
 	movieNamePrev.className = "movie_name";
-	movieYearPrev.className = "movie_year";
+	movieYearPrev.classList.add("movie_year", "prev");
 	movieStarsPrev.className = "movie_stars";
 
-	previewEl.append(tilePrev);
-	tilePrev.append(movieYearPrev, movieNamePrev, movieStarsPrev);
+	//jesli nie ma elementu ="tile popup"
+	if (document.getElementsByClassName("tile_popup")[0] == undefined) {
+		tilePrev.append(movieNamePrev, movieYearPrev, movieStarsPrev);
+		previewEl.append(tilePrev);
+		tilePrev.className = "tile_popup";
+	}
 }
 
 function createPreview(input) {
@@ -136,8 +133,17 @@ function createPreview(input) {
 			const imagePreview = document.createElement("img");
 			const reader = new FileReader();
 			imagePreview.classList.add("image", "movie_image"); //klasa do zdjęcia
+			const popup = document.getElementById("popup");
+			const prev = popup.getElementsByClassName("tile_popup")[0];
 
-			previewEl.prepend(imagePreview);
+			//warunek, który nie pozwoli wyswietlić dwóch obrazków, gdy dwa razy z rzędu wybierzemy plik z dysku
+			const imageIs = document.getElementsByClassName("image")[0];
+			if (imageIs == undefined) {
+				prev.prepend(imagePreview);
+			} else {
+				imageIs.remove();
+				prev.prepend(imagePreview);
+			}
 
 			reader.onload = function (event) {
 				imagePreview.src = event.target.result;
