@@ -3,7 +3,7 @@ import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
 import { showAllTiles } from "./7_search";
 
-//chmura tagów
+// chmura tagów
 
 // oblicza ilość wystąpień danego słowa
 function countAppearances() {
@@ -20,9 +20,9 @@ function countAppearances() {
 		allWords += allTitles[i] + " ";
 	}
 
-	allWords = allWords.trim().toLowerCase(); //usuwam białe znaki na początku i końcu
+	allWords = allWords.trim().toLowerCase(); // usuwa białe znaki na początku i końcu
 
-	let wordsArr = allWords.split(" "); // macierz słów
+	let wordsArr = allWords.split(" "); // tworzy macierz słów
 
 	//tworzę obiekt z liczbą wystąpień danego słowa
 	let apperancesObj = wordsArr.reduce(function (counter, index) {
@@ -34,10 +34,10 @@ function countAppearances() {
 
 		return counter;
 	}, {});
-	return apperancesObj;
+	return apperancesObj; // macierz obiektówm typu "słowo": "ilość wystąpień"
 }
 
-//wyświetla tagi w odpowiedni sposób
+// wyświetla tagi w odpowiedni sposób
 function renderCloud() {
 	const appearances = countAppearances();
 	const cloud = document.getElementById("cloud");
@@ -48,6 +48,7 @@ function renderCloud() {
 		link.classList.add("cloud-link");
 		cloud.append(link);
 
+		// w zależności od ilości wystąpień danego słowa przypisuje odpowiednią klasę linkowi
 		switch (appearances[word]) {
 			case 1:
 				link.classList.add("font-8");
@@ -72,6 +73,7 @@ function renderCloud() {
 	}
 }
 
+// utworzenie i obsłua przycisku "Pkaż wszystkie"
 function renderAllMoviesButton() {
 	const allButton = document.createElement("button");
 	allButton.textContent = "Pokaż wszystkie";

@@ -20,7 +20,7 @@ import { renderCloud, renderAllMoviesButton } from "./6_tagCloud";
 import { searchHandler, showAllTiles } from "./7_search.js";
 import { nightMode, normalMode } from "./8_nightMode";
 import { sortA_up, sortY_up, sortA_down, sortY_down } from "./9_sort";
-import { addMovieButtonHandler, preview, yearFix } from "./10_form";
+import { addMovieButtonHandler, preview } from "./10_form";
 
 let movies = data.movies; //zmienna w której przechowywany jest obiekt z filmami
 
@@ -112,19 +112,23 @@ mode.onclick = function (event) {
 	}
 };
 
+//przycisk dodawania filmu w popupie
 const addMovieButton = document.getElementById("add_btn");
 addMovieButton.onclick = function (event) {
 	movies = addMovieButtonHandler(movies); //po wywołaniu zmienna movies zostaje zaktualizowana
 	focusTrap.deactivate();
 	closePopup();
+	unshowLastPreview();
 };
 
+//przycisk w menu otwirający popup
 const showPopup = document.getElementById("showform");
 showPopup.onclick = function (event) {
 	openPopup();
 	focusTrap.activate(); // do focus-trapa
 };
 
+//przycisk X w popupie zamykający popup
 const xButton = document.getElementById("x-button");
 xButton.onclick = function (event) {
 	focusTrap.deactivate(); // do focus-trapa
@@ -148,9 +152,8 @@ function openPopup() {
 	preview();
 }
 
-const container = document.querySelector("#popup");
-
 // Inicjalizacja funkcjonalności tzw. "focus-trap" na elemencie #popup
+const container = document.querySelector("#popup");
 const focusTrap = createFocusTrap("#popup", {
 	onActivate: function () {
 		container.classList.add("trap");
@@ -160,5 +163,22 @@ const focusTrap = createFocusTrap("#popup", {
 		container.classList.remove("is-active");
 	},
 });
+
+// funkcja używana do wyczyszaczenia preview w popupie po dodaniu filmu
+function unshowLastPreview() {
+	const popup = document.getElementsByClassName("tile_popup")[0];
+	const name = popup.getElementsByClassName("movie_name")[0];
+	const year = popup.getElementsByClassName("movie_year")[0];
+	const rating = popup.getElementsByClassName("movie_stars")[0];
+	const img = popup.getElementsByClassName("movie_image")[0];
+
+	name.innerHTML = "";
+	year.innerHTML = "";
+	rating.innerHTML = "";
+
+	if (img) {
+		img.remove();
+	}
+}
 
 export { movies };

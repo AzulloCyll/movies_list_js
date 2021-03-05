@@ -3,6 +3,7 @@ import { countTiles } from "./4_countTiles";
 
 let showInElement = document.getElementsByClassName("average-rating")[0];
 
+//liczy średnią ocen
 function averageRating() {
 	let starsCounter = 0;
 	let visibleMoviesCounter = 0;
@@ -15,6 +16,7 @@ function averageRating() {
 			starsCounter += stars.length;
 		}
 	}
+
 	let rating = starsCounter / visibleMoviesCounter;
 	showInElement.innerHTML = Math.round(rating);
 }

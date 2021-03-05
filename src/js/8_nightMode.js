@@ -1,5 +1,6 @@
 import { colorTiles } from "./1_movielist";
 
+// przypisuje odpowiednie klasy (.dark) elementów których chcę zmienić wygląd
 function nightMode() {
 	const body = document.body;
 	const buttons = document.getElementsByTagName("button");
@@ -31,6 +32,7 @@ function nightMode() {
 	colorTiles();
 }
 
+// usuwam odpowiednie klasy (.dark) elementów których chcę zmienić wygląd
 function normalMode() {
 	const body = document.body;
 	const buttons = document.getElementsByTagName("button");

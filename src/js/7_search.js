@@ -11,7 +11,7 @@ function searchHandler(search) {
 
 	hideAllTiles(); // ukrywa wszystkie kafelki
 
-	//pokazuje kafelki przy ilosci znaków 3 lub więcej, oraz gdy wpisany ciąg znaku zawiera się w nazwie filmu
+	// pokazuje kafelki przy ilosci znaków 3 lub więcej, oraz gdy wpisany ciąg znaków zawiera się w nazwie filmu
 	for (let i = 0; i < tiles.length; i++) {
 		if (names[i].innerHTML.toLowerCase().includes(search)) {
 			names[i].parentNode.hidden = false;

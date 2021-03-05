@@ -5,15 +5,13 @@
 	box-sizing: border-box;
 }
 
-// stylowanie focusa i usuniecie focusa gdy klikniemy myszką
-*:focus {
-	outline: 5px dashed purple;
-}
-
-[data-whatinput="mouse"] *:focus {
+[data-whatintent="mouse"] *:focus {
 	outline: none;
 }
-// #END
+
+[data-whatinput="keyboard"] *:focus {
+	outline: 3px dotted rgb(126, 132, 235);
+}
 
 body {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

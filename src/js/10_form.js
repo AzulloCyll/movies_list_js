@@ -45,36 +45,33 @@ function addMovie(movies, movie) {
 	return movies;
 }
 
+// funkcja tworzy obiekt z danych podanych w formularzu
 function addMovieButtonHandler(movies) {
 	let name = document.getElementById("new-name");
 	let year = document.getElementById("new-year");
 	let img = document.getElementsByClassName("image")[0];
 	let rating = document.getElementById("new-rating");
+
 	let movie = {};
 	movie.name = name.value;
 	movie.year = year.value;
 
-	if (!img) {
-		movie.img =
-			"https://dummyimage.com/200x285/ededed/000000.jpg&text=No+Image";
-	} else {
+	if (img) {
 		movie.img = img.src;
 	}
 
 	movie.rating = rating.value;
 
-	//obsługa błędów - walidacja
+	//obsługa błędów - aby dodać film muszą być podane: Tytuł, data wydania, oraz zdjęcie okładki
 	if (movie.name == "" || movie.year == "" || !img) {
 		alert("Podaj tytuł filmu, datę wydania oraz zdjęcie");
 		return movies;
 	} else {
-		movies = addMovie(movies, movie);
+		movies = addMovie(movies, movie); //do funkcji dodaje obiekt movies, oraz nowo utworzony biekt pojedynczego filmu
 		alert("Film dodany");
 
-		//reset formularza i preview
-
+		//reset formularza
 		form_popup.reset();
-		document.getElementsByClassName("image")[0].remove();
 
 		return movies;
 	}
@@ -91,6 +88,7 @@ const movieStarsPrev = document.createElement("span");
 const previewEl = document.getElementById("preview");
 const tilePrev = document.createElement("div");
 
+//pokazuje preview
 function preview() {
 	movieNamePrev.className = "movie_name";
 	movieYearPrev.classList.add("movie_year", "prev");
@@ -169,4 +167,4 @@ img.onchange = function (event) {
 	createPreview(img);
 };
 
-export { addMovieButtonHandler, preview };
+export { addMovieButtonHandler, preview }; // jeszcze preview
