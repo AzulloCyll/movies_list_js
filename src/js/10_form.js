@@ -151,7 +151,7 @@ function createPreview(input) {
 	}
 }
 
-name.onkeypress = function (event) {
+name.oninput = function (event) {
 	createPreview();
 };
 
