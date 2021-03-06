@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 }
 
-[data-whatintent="mouse"] *:focus {			
+[data-whatintent="mouse"] *:focus {
 	outline: none;
 }
 
@@ -496,4 +496,8 @@ button.dark,
 	margin: 0 auto;
 	color: black;
 	top: 50px;
+}
+
+.cloud-button {
+	margin-right: 10px;
 }

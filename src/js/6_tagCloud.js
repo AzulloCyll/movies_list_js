@@ -1,7 +1,7 @@
 import { colorTiles } from "./1_movielist";
 import { countTiles } from "./4_countTiles";
 import { averageRating } from "./5_averageRating";
-import { showAllTiles } from "./7_search";
+import { showAllTiles, searchHandler } from "./7_search";
 
 // chmura tagów
 
@@ -39,6 +39,14 @@ function countAppearances() {
 
 // wyświetla tagi w odpowiedni sposób
 function renderCloud() {
+	// jeśli istnieją już linki, skasuj je, aoby móc je potem wyświetlić od nowa
+	const isLinks = document.getElementsByClassName("cloud-link");
+	if (isLinks) {
+		while (isLinks.length > 0) {
+			isLinks[0].remove();
+		}
+	}
+
 	const appearances = countAppearances();
 	const cloud = document.getElementById("cloud");
 
@@ -71,13 +79,22 @@ function renderCloud() {
 				break;
 		}
 	}
+
+	//obsługa filtrowania po chmurze tagów
+	const links = document.getElementsByClassName("cloud-link");
+	for (let i = 0; i < links.length; i++) {
+		links[i].onclick = function (event) {
+			searchHandler(event.target.textContent);
+		};
+	}
 }
 
 // utworzenie i obsłua przycisku "Pkaż wszystkie"
 function renderAllMoviesButton() {
 	const allButton = document.createElement("button");
+	allButton.classList.add("cloud-button");
 	allButton.textContent = "Pokaż wszystkie";
-	cloud.append(allButton);
+	cloud.prepend(allButton);
 	allButton.onclick = function () {
 		showAllTiles();
 		countTiles();

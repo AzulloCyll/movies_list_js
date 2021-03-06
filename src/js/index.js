@@ -56,15 +56,7 @@ search.oninput = function (event) {
 	}
 };
 
-renderCloud(); // wyświetlenie chmury tagów
-
-//obsługa filtrowania po chmurze tagów
-const links = document.getElementsByClassName("cloud-link");
-for (let i = 0; i < links.length; i++) {
-	links[i].onclick = function (event) {
-		searchHandler(event.target.textContent);
-	};
-}
+renderCloud(); // wyświetlenie chmury tagów i zainicjalizowanie jej obsługi
 
 renderAllMoviesButton(); //button pokazujący wszystkie filmy
 
@@ -119,6 +111,7 @@ addMovieButton.onclick = function (event) {
 	focusTrap.deactivate();
 	closePopup();
 	unshowLastPreview();
+	renderCloud(); // reincjalizacja chmury tagów
 };
 
 //przycisk w menu otwirający popup
