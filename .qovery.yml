@@ -1,0 +1,11 @@
+---
+application:
+  name: "zaliczenie"
+  project: "spacer-dany"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-zaliczenie"
+  routes:
+  - application_name: "zaliczenie"
+    paths:
+    - "/*"
