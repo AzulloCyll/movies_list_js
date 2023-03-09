@@ -1,103 +1,121 @@
 <!DOCTYPE html>
 <html lang="pl">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, shrink-to-fit=no"
+		/>
+		<title>Daniel Chmur - zadanie zaliczeniowe JS</title>
+		<script
+			type="module"
+			src="https://kit.fontawesome.com/61b36d7195.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="../css/index.scss" />
+	</head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, shrink-to-fit=no" />
-	<title>Daniel Chmur - zadanie zaliczeniowe JS</title>
-	<link rel="stylesheet" href="../css/index.scss" />
-	<script src="https://kit.fontawesome.com/a6e0181cb2.js" crossorigin="anonymous"></script>
-</head>
+	<body>
+		<div class="rwd">
+			<header id="header">
+				<button id="mode" class="change_view">Tryb nocny</button>
 
-<body>
-	<div class="rwd">
-		<header id="header">
-			<button id="mode" class="change_view">Tryb nocny</button>
+				<div id="logo">Lista filmów</div>
+			</header>
 
-			<div id="logo">Lista filmów</div>
-		</header>
+			<nav id="menu" class="menu">
+				<button id="nav-open"><i class="fas fa-bars"></i></button>
 
-
-		<nav id="menu" class="menu">
-			<button id="nav-open"><i class="fas fa-bars"></i></button>
-
-			<div id="nav" class="nav">
-				<button id="nav-close"><i class="fas fa-times"></i></button>
-				<div id="menu-right">
-					<div class="menu-opened">
-						<div class="film-counter">Wyświetlonych filmów: <span class="film-nubmer"></span></div>
-						<div class="rating-counter">Średnia ocen: <span class="average-rating"></span></div>
+				<div id="nav" class="nav">
+					<button id="nav-close"><i class="fas fa-times"></i></button>
+					<div id="menu-right">
+						<div class="menu-opened">
+							<div class="film-counter">
+								Wyświetlonych filmów: <span class="film-nubmer"></span>
+							</div>
+							<div class="rating-counter">
+								Średnia ocen: <span class="average-rating"></span>
+							</div>
+						</div>
+						<div id="cloud" class="cloud"></div>
 					</div>
-					<div id="cloud" class="cloud"></div>
 				</div>
-			</div>
 
-			<input id="search" type="search" name="search" class="search">
+				<input id="search" type="search" name="search" class="search" />
 
-			<select id="select" class="select">
-				<option class="all">Wszystkie</option>
-			</select>
-			<label for="select">Pokaż w filmy z roku:</label>
-			<button id="sort-y" class="sort">Sortuj po dacie premiery<i class="fas fa-sort-up"></i></button>
-			<button id="sort-a" class="sort">Sortuj alfabetycznie<i class="fas fa-sort-up"></i></button>
-			<button id="showform">Dodaj film</button>
-			<div class="clear"></div>
-		</nav>
-
-		<main id="main" class="main">
-			<nav id="menu2" class="menu2">
-				<button class="columns-btn" data-button-switch-to data-text-5cols="5 kolumn"
-					data-text-3cols="3 kolumny">Przełącz na
+				<select id="select" class="select">
+					<option class="all">Wszystkie</option>
+				</select>
+				<label for="select">Pokaż w filmy z roku:</label>
+				<button id="sort-y" class="sort">
+					Sortuj po dacie premiery<i class="fas fa-sort-up"></i>
 				</button>
+				<button id="sort-a" class="sort">
+					Sortuj alfabetycznie<i class="fas fa-sort-up"></i>
+				</button>
+				<button id="showform">Dodaj film</button>
+				<div class="clear"></div>
 			</nav>
-		</main>
-		<div class="clear"></div>
-	</div>
 
-
-	<div id="apla">
-
-		<div id="popup">
-			<form id="addmovie" name="form_popup">
-
-				<p><i>Dodaj nowy film:</i></p>
-
-				<input type="text" name="new-name" id="new-name" tabindex="0">
-				<label for="new-name">Tytuł filmu: </label>
-				<div class="clear"></div>
-
-				<input type="number" name="new-year" id="new-year" min="1950" max="2021">
-				<label for="new-year">Data wydania: </label>
-				<div class="clear"></div>
-
-				<input type="file" name="new-img" id="new-img">
-				<label for="new-img">Okładka: </label>
-				<div class="clear"></div>
-
-				<select name="new-rating" id="new-rating">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select><label for="new-rating">Ocena: </label>
-				<div class="clear"></div>
-
-				<button type="button" id="add_btn">Dodaj</button>
-				<div class="clear"></div>
-
-				<button id="x-button" type="button"><i class="fas fa-times"></i></button>
-
-			</form>
-			<div id="preview"></div>
-
+			<main id="main" class="main">
+				<nav id="menu2" class="menu2">
+					<button
+						class="columns-btn"
+						data-button-switch-to
+						data-text-5cols="5 kolumn"
+						data-text-3cols="3 kolumny"
+					>
+						Przełącz na
+					</button>
+				</nav>
+			</main>
+			<div class="clear"></div>
 		</div>
 
-	</div>
-	<script src="../js/index.js"></script>
-</body>
+		<div id="apla">
+			<div id="popup">
+				<form id="addmovie" name="form_popup">
+					<p><i>Dodaj nowy film:</i></p>
 
+					<input type="text" name="new-name" id="new-name" tabindex="0" />
+					<label for="new-name">Tytuł filmu: </label>
+					<div class="clear"></div>
+
+					<input
+						type="number"
+						name="new-year"
+						id="new-year"
+						min="1950"
+						max="2021"
+					/>
+					<label for="new-year">Data wydania: </label>
+					<div class="clear"></div>
+
+					<input type="file" name="new-img" id="new-img" />
+					<label for="new-img">Okładka: </label>
+					<div class="clear"></div>
+
+					<select name="new-rating" id="new-rating">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option></select
+					><label for="new-rating">Ocena: </label>
+					<div class="clear"></div>
+
+					<button type="button" id="add_btn">Dodaj</button>
+					<div class="clear"></div>
+
+					<button id="x-button" type="button">
+						<i class="fas fa-times"></i>
+					</button>
+				</form>
+				<div id="preview"></div>
+			</div>
+		</div>
+		<script type="module" src="../js/index.js"></script>
+	</body>
 </html>
